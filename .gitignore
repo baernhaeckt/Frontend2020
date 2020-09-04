@@ -1,0 +1,50 @@
+Thumbs.db
+.DS_Store
+
+#Ignore files built by Visual Studio and Visual Code
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+!/[Ww]ebsite/[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+
+#Node.js
+node_modules
+
+#Ignore folders built by VueJS
+dist
+wwwroot
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+#Vs-Files
+**/.vs/**/*
+.vscode/
