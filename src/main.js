@@ -4,13 +4,17 @@ import 'mdbvue/lib/mdbvue.css'
 import Vue from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'
-import router from './router'
-import store from './store'
+import router from '@/router'
+import store from '@/store'
+import http from '@/http'
+import auth from '@/auth'
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
+  http,
+  auth,
   render: h => h(App)
 }).$mount('#app')

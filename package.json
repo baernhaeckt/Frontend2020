@@ -9,8 +9,10 @@
     "start": "vue-cli-service serve --open"
   },
   "dependencies": {
+    "@websanova/vue-auth": "^3.3.1",
     "core-js": "^3.6.5",
     "mdbvue": "6.2.0",
+    "nprogress": "^0.2.0",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
