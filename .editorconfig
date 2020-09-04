@@ -1,17 +1,5 @@
-root = true
-
-[*]
-charset = utf-8
-end_of_line = crlf
-indent_style = tab
-indent_size = 4
-tab_width = 4
-insert_final_newline = true
-trim_trailing_whitespace = true
-max_line_length=5000
-
-[*.{js,jsx,ts,tsx,vue,css,scss,sass,less,styl,html,pug,json}]
+[*.{js,jsx,ts,tsx,vue}]
 indent_style = space
-
-[*.{cs,cshtml,cake,yaml,ps1}]
-indent_style = tab
+indent_size = 2
+trim_trailing_whitespace = true
+insert_final_newline = true
