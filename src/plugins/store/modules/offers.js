@@ -14,11 +14,12 @@ export default {
       return new Promise((resolve, reject) => {
         apiCall({
           url: ApiRoutes.offers.list,
-          method: 'get',
+          method: 'post',
+          data: interests,
           dispatch: dispatch
         })
           .then(resp => {
-            commit(OFFERS_LIST, resp.offers)
+            commit(OFFERS_LIST, resp)
             resolve(resp)
           })
           .catch(err => {

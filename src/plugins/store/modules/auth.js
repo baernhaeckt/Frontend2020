@@ -48,12 +48,15 @@ export default {
       return new Promise((resolve, reject) => {
         commit(AUTH_REQUEST)
         apiCall({
-          url: ApiRoutes.user.signup,
+          url: ApiRoutes.user.register,
           data: user,
           method: 'post',
           dispatch: dispatch
         })
           .then(resp => {
+            localStorage.setItem('user-token', resp.token)
+            commit(AUTH_SUCCESS, resp)
+            dispatch(AUTH_REQUEST)
             resolve(resp)
           })
           .catch(err => {

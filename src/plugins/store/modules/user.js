@@ -35,7 +35,7 @@ export default {
     [USER_UPDATE]: ({ commit, dispatch }, profile) => {
       return new Promise((resolve, reject) => {
         apiCall({
-          url: ApiRoutes.user.update,
+          url: ApiRoutes.user.register,
           data: profile,
           method: 'patch',
           dispatch: dispatch

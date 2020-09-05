@@ -49,6 +49,11 @@ export default {
           })
         })
     }
+  },
+  mounted () {
+    if (this.$store.getters.isAuthenticated) {
+      this.$router.go(-1)
+    }
   }
 }
 </script>

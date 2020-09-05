@@ -16,7 +16,7 @@ export const ApiRoutes = {
     next: ApiServer + 'api/Interests/next'
   },
   offers: {
-    list: ApiServer + 'api/Offers'
+    list: ApiServer + 'api/Offers/suggest'
   }
 }
 

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import store from '@/plugins/store'
+import { AUTH_SIGNUP } from '@/plugins/store/actions/auth'
 export default {
   name: 'register',
   data () {
@@ -28,7 +28,10 @@ export default {
         email: this.email,
         password: this.password
       }
-      store.dispatch('user/register', data)
+      this.$store.dispatch(AUTH_SIGNUP, data).then(() => {
+        this.$toastr.s('Benutzer erstellt', 'Vielen Dank für Deine Registration.')
+        this.$router.go(-1)
+      })
     }
   }
 }
