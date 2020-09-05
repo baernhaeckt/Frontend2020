@@ -18,7 +18,6 @@ export default {
           dispatch: dispatch
         })
           .then(resp => {
-            console.log(resp)
             commit(OFFERS_LIST, resp.offers)
             resolve(resp)
           })

@@ -24,7 +24,6 @@ export default {
     ...mapGetters(['getInterests', 'getOffers']),
     offers () {
       const offers = this.getOffers
-      console.log(offers)
       return offers
     }
   },

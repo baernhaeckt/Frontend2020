@@ -32,14 +32,12 @@ export default {
           dispatch: dispatch
         })
           .then(resp => {
-            console.log(resp)
             localStorage.setItem('user-token', resp.token)
             commit(AUTH_SUCCESS, resp)
             dispatch(USER_REQUEST)
             resolve(resp)
           })
           .catch(err => {
-            console.log(err)
             commit(AUTH_ERROR, err)
             localStorage.removeItem('user-token')
             reject(err)

@@ -3,7 +3,7 @@
         <flip-card v-for="offer in $props.offers" :key="offer.id" class="mb-3">
             <template slot="front">
                     <mdb-card>
-                        <mdb-card-image :src="`https://picsum.photos/800/400?date${offer.id}`"></mdb-card-image>
+                        <mdb-card-image :src="`https://baernhaeckt2020.blob.core.windows.net/images/offers/${offer.name.replace(/ /g,'_')}.jpg`"></mdb-card-image>
                         <mdb-card-body>
                             <mdb-card-title>{{offer.name}}</mdb-card-title>
                             <mdb-card-text>{{offer.description}}</mdb-card-text>

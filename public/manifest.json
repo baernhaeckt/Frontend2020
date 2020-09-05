@@ -1,0 +1,10 @@
+{
+    "name": "Tuuri",
+    "short_name": "Tuuri",
+    "theme_color": "#d22831",
+    "background_color": "#d22831",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "/"
+  }
