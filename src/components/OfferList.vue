@@ -18,11 +18,11 @@
                     </mdb-card>
             </template>
             <template slot="back">
-                <mdb-card>
+                <mdb-card class="backside">
                     <mdb-card-body>
                         <mdb-card-title>{{offer.name}}</mdb-card-title>
                         <mdb-card-text>
-                            <p>
+                            <p class="floated-text">
                                 <img class="z-depth-1 rounded-circle float-right mt-2" :src="`https://baernhaeckt2020.blob.core.windows.net/images/guides/${offer.guideDisplayName.replace(/ /g,'_').toLowerCase()}.jpg`" width="120" height="120" />
                                 {{offer.description}}
                             </p>
@@ -33,6 +33,7 @@
                                     {{incl.name}}: {{incl.description}} <mdb-badge color="primary">Wert: {{new Intl.NumberFormat('de-CH', { style: 'currency', currency: 'CHF' }).format(incl.price)}}</mdb-badge>
                                 </li>
                             </ul>
+                            <mdb-btn color="primary" class="float-right">Angebot auswählen</mdb-btn>
                         </mdb-card-text>
                     </mdb-card-body>
                 </mdb-card>
@@ -107,6 +108,17 @@ export default {
 
         &:first-child {
             margin-top: 15px;
+        }
+
+        &.backside {
+            .floated-text {
+                word-wrap: break-word;
+                img.rounded-circle {
+                    display: inline-block;
+                    shape-outside: circle();
+                    border-radius: 50%;
+                }
+            }
         }
     }
 }
