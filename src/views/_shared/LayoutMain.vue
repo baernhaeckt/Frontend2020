@@ -3,7 +3,7 @@
     <mdb-container fluid>
       <header-main/>
       <main>
-          <slot />
+        <slot />
       </main>
 
       <footer-main />

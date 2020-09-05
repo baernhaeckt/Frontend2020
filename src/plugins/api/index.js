@@ -10,6 +10,10 @@ export const ApiRoutes = {
     login: ApiServer + 'api/users/Login',
     register: ApiServer + 'api/users/Register',
     profile: ApiServer + 'api/profile'
+  },
+  interests: {
+    list: ApiServer + 'api/Interests',
+    next: ApiServer + 'api/Interests/next'
   }
 }
 

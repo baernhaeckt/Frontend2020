@@ -9,12 +9,14 @@ import store from '@/plugins/store'
 import componentsRegistrar from '@/componentsRegistrar'
 
 import VueSnackbar from 'vue-snack'
+import { VueHammer } from 'vue2-hammer'
 
 componentsRegistrar()
 
 require('vue-snack/dist/vue-snack.min.css')
 
 Vue.use(VueSnackbar, {})
+Vue.use(VueHammer)
 
 new Vue({
   router,

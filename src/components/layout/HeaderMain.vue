@@ -1,6 +1,6 @@
 <template>
-  <header role="banner">
-    <mdb-navbar class="w-100">
+  <header role="banner" class="header-banner">
+    <mdb-navbar dark>
       <mdb-navbar-brand>
         <router-link class="logo" to="/">
           <img src="/img/logo_tuuri.png" />
@@ -17,7 +17,7 @@
         <template v-if="$store.getters.isAuthenticated">
           {{ user.email }}
           <div class="seperator"/>
-          <mdb-btn color="primary" @click="processLogout">Logout</mdb-btn>
+          <mdb-btn color="grey" @click="processLogout">Logout</mdb-btn>
         </template>
       </mdb-navbar-toggler>
     </mdb-navbar>
@@ -53,7 +53,9 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch(USER_REQUEST)
+    if (this.$store.getters.isAuthenticated) {
+      this.$store.dispatch(USER_REQUEST)
+    }
   },
   components: {
     NavigationLink
@@ -62,9 +64,13 @@ export default {
 </script>
 
 <style lang="scss">
-.logo {
-  img {
-    height: 100px;
+.header-banner {
+  margin-top: 15px;
+  background-color: #d22831;
+  .logo {
+    img {
+      height: 100px;
+    }
   }
 }
 </style>
