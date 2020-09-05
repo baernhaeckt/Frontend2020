@@ -3,7 +3,7 @@
     <mdb-navbar class="w-100">
       <mdb-navbar-brand>
         <router-link class="logo" to="/">
-          <img src="/img/logo.png" />
+          <img src="/img/logo_tuuri.png" />
           <span class="sr-only">Tuuri</span>
         </router-link>
       </mdb-navbar-brand>
@@ -14,7 +14,8 @@
           </mdb-nav-item>
         </mdb-navbar-nav>
 
-        <template v-if="$auth.check()">
+        <template v-if="$store.getters.isAuthenticated">
+          {{ user.email }}
           <div class="seperator"/>
           <mdb-btn color="primary" @click="processLogout">Logout</mdb-btn>
         </template>
@@ -26,6 +27,9 @@
 <script>
 import NavigationLink from '@/components/layout/NavigationLink'
 import { NAVIGATION_ROUTES } from '@/plugins/router'
+import { AUTH_LOGOUT } from '@/plugins/store/actions/auth.js'
+import { USER_REQUEST } from '@/plugins/store/actions/user.js'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'HeaderMain',
@@ -35,11 +39,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['getProfile']),
     user () {
-      return this.$store.getters['user/get'] || {}
-    },
-    username () {
-      return this.user ? `${this.user.firstname} ${this.user.lastname}` : ''
+      return this.getProfile
     },
     navigation () {
       return this.routes.filter(r => !r.meta.hidden)
@@ -47,10 +49,11 @@ export default {
   },
   methods: {
     processLogout () {
-      this.$auth.logout()
+      this.$store.dispatch(AUTH_LOGOUT).then(() => this.$router.push('/login'))
     }
   },
-  watch: {
+  mounted () {
+    this.$store.dispatch(USER_REQUEST)
   },
   components: {
     NavigationLink
@@ -59,5 +62,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+.logo {
+  img {
+    height: 100px;
+  }
+}
 </style>

@@ -3,6 +3,15 @@ import About from '../../views/About.vue'
 import Forbidden from '../../views/Forbidden.vue'
 import Login from '../../views/Login.vue'
 import Register from '../../views/Register.vue'
+import store from '../store'
+
+const ifAuthenticated = (to, from, next) => {
+  if (store.getters.isAuthenticated) {
+    next()
+    return
+  }
+  next('/login')
+}
 
 export default [
   {
@@ -23,8 +32,8 @@ export default [
     name: 'about',
     label: 'Über uns',
     component: About,
+    beforeEnter: ifAuthenticated,
     meta: {
-      auth: true,
       navi: {
         icon: null
       }
@@ -36,7 +45,6 @@ export default [
     label: 'Einloggen',
     component: Login,
     meta: {
-      auth: undefined,
       hidden: true,
       navi: {
         icon: null
@@ -49,7 +57,6 @@ export default [
     label: 'Registrieren',
     component: Register,
     meta: {
-      auth: undefined,
       hidden: true,
       navi: {
         icon: null
@@ -62,7 +69,6 @@ export default [
     label: 'Kein Zugriff',
     component: Forbidden,
     meta: {
-      auth: undefined,
       hidden: true,
       navi: {
         icon: null

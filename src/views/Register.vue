@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import store from '@/plugins/store'
 export default {
   name: 'register',
   data () {
@@ -27,10 +28,7 @@ export default {
         email: this.email,
         password: this.password
       }
-      this.$auth.register({
-        data: data,
-        redirect: { name: 'home' }
-      })
+      store.dispatch('user/register', data)
     }
   }
 }
