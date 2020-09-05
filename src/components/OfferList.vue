@@ -9,6 +9,12 @@
                             <mdb-card-text>{{offer.description}}</mdb-card-text>
                             <mdb-btn color="primary">Details</mdb-btn>
                         </mdb-card-body>
+                        <span class="guide-bubble">
+                            <img class="img-fluid z-depth-1 rounded-circle" :src="`https://baernhaeckt2020.blob.core.windows.net/images/guides/${offer.guideDisplayName.replace(/ /g,'_').toLowerCase()}.jpg`" width="60" height="60" />
+                        </span>
+                        <span class="price-tag-container">
+                            <span class="price-tag">{{calculatePrice(offer)}}</span>
+                        </span>
                     </mdb-card>
             </template>
             <template slot="back">
@@ -19,7 +25,7 @@
                             <p>{{offer.description}}</p>
                             <p>Du wirst begleitet von {{offer.guideDisplayName}}.</p>
                             <p><strong>Folgende Leistungen sind im Angebot inbegriffen:</strong></p>
-                            <ul>
+                            <ul class="included-items">
                                 <li v-for="incl in offer.includedItems" :key="incl.name">
                                     {{incl.name}}: {{incl.description}} <mdb-badge color="primary">Wert: {{new Intl.NumberFormat('de-CH', { style: 'currency', currency: 'CHF' }).format(incl.price)}}</mdb-badge>
                                 </li>
@@ -41,6 +47,14 @@ export default {
     }
   },
   methods: {
+    calculatePrice (offer) {
+      return new Intl.NumberFormat(
+        'de-CH',
+        { style: 'currency', currency: 'CHF' }
+      ).format(offer.includedItems.reduce((acc, val) => {
+        return acc + val.price
+      }, 0))
+    }
   }
 }
 </script>
@@ -48,6 +62,46 @@ export default {
 <style lang="scss">
 .offer-list {
     .card {
+        position: relative;
+
+        .price-tag-container {
+            border-style: solid;
+            border-width: 0 85px 58px 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 0px;
+            width: 0px;
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+            border-color: transparent #d22831 transparent transparent;
+
+            .price-tag {
+                color: #fff;
+                position: absolute;
+                right: -84px;
+                top: 15px;
+                font-size: 12px;
+                font-weight: bold;
+                white-space: nowrap;
+                transform: rotate(35deg);
+            }
+        }
+
+        .guide-bubble {
+            position: absolute;
+            left: 15px;
+            top: 155px;
+            border: 3px solid #d22831;
+            border-radius: 50%;
+        }
+
+        .included-items {
+            padding-left: 20px;
+        }
+
         &:first-child {
             margin-top: 15px;
         }
