@@ -1,12 +1,22 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <toaster/>
+
+    <layout-main>
+      <router-view/>
+    </layout-main>
   </div>
 </template>
+<script>
+import LayoutMain from '@/views/_shared/LayoutMain'
+import Toaster from '@/components/Toaster'
+export default {
+  components: {
+    LayoutMain,
+    Toaster
+  }
+}
+</script>
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
@@ -18,7 +28,6 @@ $image-path: '~@/../mdb/mdbvue/img';
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 

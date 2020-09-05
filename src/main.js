@@ -9,7 +9,12 @@ import store from '@/store'
 import http from '@/http'
 import auth from '@/auth'
 
+import * as mdbvue from 'mdbvue'
+
 Vue.config.productionTip = false
+for (const component in mdbvue) {
+  Vue.component(component, mdbvue[component])
+}
 
 new Vue({
   router,
