@@ -11,7 +11,9 @@ import componentsRegistrar from '@/componentsRegistrar'
 import VueSnackbar from 'vue-snack'
 import { VueHammer } from 'vue2-hammer'
 
+import VueToastr from 'vue-toastr'
 import websockets from './websockets'
+
 window.websockets = websockets
 
 componentsRegistrar()
@@ -19,6 +21,10 @@ componentsRegistrar()
 require('vue-snack/dist/vue-snack.min.css')
 
 Vue.use(VueSnackbar, {})
+Vue.use(VueToastr, {
+  defaultPosition: 'toast-top-full-width',
+  defaultClassNames: ['mt-5']
+})
 Vue.use(VueHammer)
 
 window.vueInstance = new Vue({

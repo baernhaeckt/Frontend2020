@@ -13,11 +13,11 @@ const startConnection = apiToken => {
     .build()
 
   connection.on('newEvent', event => {
-    window.vueInstance.$bvToast.toast(event.message, {
+    window.vueInstance.$toastr.Add({
+      name: 'WebSocketToast',
       title: event.title,
-      variant: event.variant,
-      solid: true,
-      autoHideDelay: 5000
+      msg: event.message,
+      type: event.variant
     })
   })
 
