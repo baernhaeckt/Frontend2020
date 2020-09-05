@@ -5,8 +5,8 @@
             v-bind:key="$props.card.name"
             v-hammer:pan="(event) => cardOnPan(event, $props.card)"
             ref="topCard"
-            style="background-image: url('https://picsum.photos/400/600')">
-            <p class="label">{{$props.card.name}}</p>
+            :style="`background-image: url('https://baernhaeckt2020.blob.core.windows.net/images/interests/${$props.card.name}.jpg')`">
+            <div class="label">{{$props.card.label || $props.card.name}}</div>
         </div>
     </div>
 </template>
@@ -137,6 +137,19 @@ export default {
 
     @media (max-width: 767px) {
         top: calc(50% - 48px);
+    }
+
+    .label {
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
     }
   }
 }

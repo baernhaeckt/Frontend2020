@@ -9,6 +9,7 @@
     "start": "vue-cli-service serve --open"
   },
   "dependencies": {
+    "@aspnet/signalr": "^1.1.4",
     "core-js": "^3.6.5",
     "mdbvue": "6.2.0",
     "nprogress": "^0.2.0",

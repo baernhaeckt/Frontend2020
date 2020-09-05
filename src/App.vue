@@ -10,6 +10,21 @@
 import LayoutMain from '@/views/_shared/LayoutMain'
 import Toaster from '@/components/Toaster'
 export default {
+  mounted () {
+    if (this.$store.getters.isAuthenticated) {
+      window.websockets.startConnection(this.$store.getters.accessToken)
+    }
+    this.$store.watch(
+      (state, getters) => getters.isAuthenticated,
+      (newValue, oldValue) => {
+        if (newValue) {
+          window.websockets.startConnection(this.$store.getters.accessToken)
+        } else {
+          window.websockets.stopConnection()
+        }
+      }
+    )
+  },
   components: {
     LayoutMain,
     Toaster

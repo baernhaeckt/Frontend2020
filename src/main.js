@@ -11,6 +11,9 @@ import componentsRegistrar from '@/componentsRegistrar'
 import VueSnackbar from 'vue-snack'
 import { VueHammer } from 'vue2-hammer'
 
+import websockets from './websockets'
+window.websockets = websockets
+
 componentsRegistrar()
 
 require('vue-snack/dist/vue-snack.min.css')
@@ -18,7 +21,7 @@ require('vue-snack/dist/vue-snack.min.css')
 Vue.use(VueSnackbar, {})
 Vue.use(VueHammer)
 
-new Vue({
+window.vueInstance = new Vue({
   router,
   store,
   render: h => h(App)
