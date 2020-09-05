@@ -14,6 +14,9 @@ export const ApiRoutes = {
   interests: {
     list: ApiServer + 'api/Interests',
     next: ApiServer + 'api/Interests/next'
+  },
+  offers: {
+    list: ApiServer + 'api/Offers'
   }
 }
 

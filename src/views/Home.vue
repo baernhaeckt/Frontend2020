@@ -1,14 +1,13 @@
 <template>
   <div class="home">
     <swiper v-if="step === 'interests' && interestsLoaded" :card="activeCard" @swiperesult="onCardSwipeResult" />
-    <template v-if="step === 'offers'">
-      <p>OFFERS!</p>
-    </template>
+    <offer-list v-if="step === 'offers'" :offers="offers" />
   </div>
 </template>
 
 <script>
 import { INTERESTS_LIST, INTERESTS_NEXT } from '@/plugins/store/actions/interests'
+import { OFFERS_LIST } from '@/plugins/store/actions/offers'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -22,7 +21,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getInterests'])
+    ...mapGetters(['getInterests', 'getOffers']),
+    offers () {
+      const offers = this.getOffers
+      console.log(offers)
+      return offers
+    }
   },
   methods: {
     onCardSwipeResult (result) {
@@ -36,6 +40,9 @@ export default {
           this.step = 'offers'
         }
       })
+    },
+    loadOffers () {
+      this.$store.dispatch(OFFERS_LIST, this.answers)
     }
   },
   mounted () {
@@ -43,6 +50,13 @@ export default {
       this.interestsLoaded = true
       this.activeCard = this.getInterests
     })
+  },
+  watch: {
+    step: function (newStep) {
+      if (newStep === 'offers') {
+        this.loadOffers()
+      }
+    }
   }
 }
 </script>
