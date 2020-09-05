@@ -22,7 +22,10 @@
                     <mdb-card-body>
                         <mdb-card-title>{{offer.name}}</mdb-card-title>
                         <mdb-card-text>
-                            <p>{{offer.description}}</p>
+                            <p>
+                                <img class="z-depth-1 rounded-circle float-right mt-2" :src="`https://baernhaeckt2020.blob.core.windows.net/images/guides/${offer.guideDisplayName.replace(/ /g,'_').toLowerCase()}.jpg`" width="120" height="120" />
+                                {{offer.description}}
+                            </p>
                             <p>Du wirst begleitet von {{offer.guideDisplayName}}.</p>
                             <p><strong>Folgende Leistungen sind im Angebot inbegriffen:</strong></p>
                             <ul class="included-items">

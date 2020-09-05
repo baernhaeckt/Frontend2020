@@ -43,6 +43,7 @@ $image-path: '~@/../mdb/mdbvue/img';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  padding-bottom: 80px;
 }
 
 #nav {
