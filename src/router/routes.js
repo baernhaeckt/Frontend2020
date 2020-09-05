@@ -7,7 +7,7 @@ export default [
     name: 'Home',
     component: Home,
     meta: {
-      auth: false,
+      auth: undefined,
       navi: {
         icon: 'home'
       }
@@ -29,7 +29,7 @@ export default [
     name: 'Login',
     component: () => import('../views/Login.vue'),
     meta: {
-      auth: false,
+      auth: undefined,
       hidden: true,
       navi: {
         icon: null

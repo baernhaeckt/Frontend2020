@@ -13,7 +13,6 @@ Vue.use(VueAuth, {
   stores: ['storage', 'cookie'],
   authRedirect: { name: 'Login' },
   forbiddenRedirect: { name: 'Forbidden' },
-  notFoundRedirect: { name: 'NotFound' },
   loginData: {
     url: 'api/users/Login',
     method: 'post',
@@ -28,7 +27,7 @@ Vue.use(VueAuth, {
     url: 'api/Auth/refreshtoken',
     method: 'post',
     enabled: false,
-    interval: 25
+    interval: 9999
   },
   logoutData: {
     makeRequest: false

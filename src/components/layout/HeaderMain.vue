@@ -13,12 +13,13 @@
             <navigation-link :route="route" />
           </mdb-nav-item>
         </mdb-navbar-nav>
+
+        <template v-if="$auth.check()">
+          <div class="seperator"/>
+          <mdb-btn color="primary" @click="processLogout">Logout</mdb-btn>
+        </template>
       </mdb-navbar-toggler>
     </mdb-navbar>
-
-    <template v-if="$auth.check()">
-      <div class="seperator"/>
-    </template>
   </header>
 </template>
 
@@ -45,6 +46,9 @@ export default {
     }
   },
   methods: {
+    processLogout () {
+      this.$auth.logout()
+    }
   },
   watch: {
   },

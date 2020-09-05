@@ -28,9 +28,7 @@ export default {
       }
       this.$auth.login({
         data: data,
-        success () {
-          console.log('Yay, loggedin successfully')
-        }
+        redirect: { name: 'About' }
       })
     }
   }
