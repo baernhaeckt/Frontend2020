@@ -1,5 +1,5 @@
 <template>
-  <div class="view-login">
+  <center-box>
     <p class="h4 text-center mb-4">Einloggen bei Tuuri</p>
     <div class="grey-text">
       <mdb-input v-model="email" label="E-Mail Adresse" icon="envelope" type="email"/>
@@ -7,13 +7,14 @@
     </div>
     <div class="text-center">
       <mdb-btn color="primary" @click="loginSubmit">Login</mdb-btn>
+      <p>Noch kein Login? <router-link :to="{ name: 'register'}">Jetzt registrieren</router-link>!</p>
     </div>
-  </div>
+  </center-box>
 </template>
 
 <script>
 export default {
-  name: 'Login',
+  name: 'login',
   data () {
     return {
       email: '',
@@ -28,7 +29,7 @@ export default {
       }
       this.$auth.login({
         data: data,
-        redirect: { name: 'About' }
+        redirect: { name: 'about' }
       })
     }
   }
@@ -36,8 +37,4 @@ export default {
 </script>
 
 <style lang="scss">
-.view-login {
-  max-width: 350px;
-  margin: 75px auto;
-}
 </style>

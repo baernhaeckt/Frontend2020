@@ -1,9 +1,9 @@
 <template>
-  <div id="Layout" data-layout-type="main">
-    <mdb-container fluid class="header-inner">
+  <div id="Layout">
+    <mdb-container fluid>
       <header-main/>
       <main>
-          <slot/>
+          <slot />
       </main>
 
       <footer-main />

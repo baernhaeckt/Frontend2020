@@ -5,9 +5,7 @@ export default {
     previousRoute: null
   },
   getters: {
-    getPreviousRoute: state => state.previousRoute,
-    getLanguage: state => state.language.active,
-    getLanguagesAvailable: state => state.language.available
+    getPreviousRoute: state => state.previousRoute
   },
   mutations: {
     setPreviousRoute (state, route = {}) {

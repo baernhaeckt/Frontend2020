@@ -11,8 +11,8 @@ Vue.use(VueAuth, {
   router: driverRouter,
   tokenDefaultKey: 'AUTH_TOKEN',
   stores: ['storage', 'cookie'],
-  authRedirect: { name: 'Login' },
-  forbiddenRedirect: { name: 'Forbidden' },
+  authRedirect: { name: 'login' },
+  forbiddenRedirect: { name: 'forbidden' },
   loginData: {
     url: 'api/users/Login',
     method: 'post',

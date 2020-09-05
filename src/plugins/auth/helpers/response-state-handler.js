@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import router from '@/router/core'
+import router from '@/plugins/router/core'
 
 export default function responseStateHandler (response = {}, callback = function () {}) {
   if (response.status === 401) {

@@ -28,17 +28,12 @@ export default {
 
 <style lang="scss">
 $spacer: 1em;
+$white: #fff;
 $loader-padding: $spacer * 3 !default;
 $loader-bg: rgba($white, 0.6) !default;
 
 $loader-spinner-size: 3em !default;
 $loader-spinner-border-width: 0.1em !default;
-
-$loader-description-font-family: inherit !default;
-$loader-description-font-weight: inherit !default;
-$loader-description-font-size: $font-size-sm !default;
-$loader-description-color: inherit !default;
-$loader-description-line-height: inherit !default;
 
 .loader-container {
   position: relative;
@@ -69,14 +64,6 @@ $loader-description-line-height: inherit !default;
     width: $loader-spinner-size;
     height: $loader-spinner-size;
     border-width: $loader-spinner-border-width;
-  }
-
-  .loader-description {
-    font-family: $loader-description-font-family;
-    font-weight: $loader-description-font-weight;
-    font-size: $loader-description-font-size;
-    color: $loader-description-color;
-    line-height: $loader-description-line-height;
   }
 
   &.is-small {

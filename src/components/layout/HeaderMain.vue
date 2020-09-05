@@ -25,7 +25,7 @@
 
 <script>
 import NavigationLink from '@/components/layout/NavigationLink'
-import { NAVIGATION_ROUTES } from '@/router'
+import { NAVIGATION_ROUTES } from '@/plugins/router'
 
 export default {
   name: 'HeaderMain',
@@ -59,40 +59,5 @@ export default {
 </script>
 
 <style lang="scss">
-$spacer: 1em;
-$header-height: 80px !default;
-$header-bg: $white !default;
-$header-box-shadow: 0 0 4px 0 rgba($black, 0.15) !default;
 
-$header-logo-max-height: 50px !default;
-$header-logo-text-gap: $spacer * 0.5 !default;
-
-header[role="banner"] {
-  box-shadow: $header-box-shadow;
-
-  .header-inner {
-    display: flex;
-    align-items: center;
-    height: $header-height;
-    background-color: $header-bg;
-
-    .seperator {
-      margin-left: $spacer;
-      margin-right: $spacer;
-      height: 100%;
-      border-left: $border-width solid $border-color;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      color: inherit;
-      text-decoration: none;
-
-      img {
-        max-height: $header-logo-max-height;
-      }
-    }
-  }
-}
 </style>

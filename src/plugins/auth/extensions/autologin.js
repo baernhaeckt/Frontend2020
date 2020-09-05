@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import store from '@/store'
+import store from '@/plugins/store'
 
 export default function autologin (callback = function () {}) {
   Vue.auth[Vue.auth.token() ? 'refresh' : 'login']()

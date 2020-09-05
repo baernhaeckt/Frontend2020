@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <toaster/>
-
     <layout-main>
       <router-view/>
     </layout-main>

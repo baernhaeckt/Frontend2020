@@ -1,5 +1,5 @@
 import router from '../core'
-import store from '@/store'
+import store from '@/plugins/store'
 
 router.beforeEach((to, from, next) => {
   next()

@@ -1,5 +1,5 @@
 import http from '../core'
-import responseStateHandler from '@/auth/helpers/response-state-handler'
+import responseStateHandler from '@/plugins/auth/helpers/response-state-handler'
 import { toast } from '@/components/Toaster'
 
 http.interceptors.response.use(
