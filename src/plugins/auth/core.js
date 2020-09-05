@@ -20,6 +20,11 @@ Vue.use(VueAuth, {
     fetchUser: false,
     staySignedIn: true
   },
+  registerData: {
+    url: 'api/users/register',
+    method: 'post',
+    redirect: { name: 'login' }
+  },
   fetchData: {
     enabled: false
   },

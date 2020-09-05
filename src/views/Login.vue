@@ -29,7 +29,7 @@ export default {
       }
       this.$auth.login({
         data: data,
-        redirect: { name: 'about' }
+        redirect: { name: 'home' }
       })
     }
   }
