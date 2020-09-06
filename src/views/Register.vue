@@ -22,6 +22,12 @@ export default {
       password: ''
     }
   },
+  props: {
+    returnUrl: {
+      default: null,
+      type: String
+    }
+  },
   methods: {
     registerSubmit () {
       const data = {
@@ -29,8 +35,12 @@ export default {
         password: this.password
       }
       this.$store.dispatch(AUTH_SIGNUP, data).then(() => {
-        this.$toastr.s('Benutzer erstellt', 'Vielen Dank für Deine Registration.')
-        this.$router.go(-1)
+        this.$toastr.s('Vielen Dank für Deine Registration.', 'Benutzer erstellt')
+        if (this.$props.returnUrl) {
+          this.$router.push(this.$props.returnUrl)
+        } else {
+          this.$router.go(-1)
+        }
       })
     }
   }

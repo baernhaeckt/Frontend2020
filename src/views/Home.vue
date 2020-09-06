@@ -41,7 +41,7 @@ export default {
       })
     },
     onOfferSelected (offer) {
-      this.$router.push({ name: 'order', params: { offer: offer } })
+      this.$router.push({ name: 'order', query: { offerId: offer.id } })
     },
     loadOffers () {
       this.$store.dispatch(OFFERS_LIST, this.answers)

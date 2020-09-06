@@ -1,1 +1,2 @@
 export const OFFERS_LIST = 'OFFERS_LIST'
+export const OFFERS_ALLOFFERS = 'OFFERS_ALLOFFERS'

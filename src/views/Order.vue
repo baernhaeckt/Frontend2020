@@ -22,25 +22,31 @@
 
 <script>
 import { GUIDES_LIST } from '@/plugins/store/actions/guides'
+import { OFFERS_ALLOFFERS } from '@/plugins/store/actions/offers'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'Order',
   props: {
-    offer: {
-      type: Object
+    offerId: {
+      type: String
     }
   },
   data () {
     return {
-      selectedOffer: this.$props.offer,
       loaded: false
     }
   },
   computed: {
-    ...mapGetters(['getGuides']),
+    ...mapGetters(['getGuides', 'getSingleOffer', 'offersInitialized']),
     guide () {
       return this.getGuides.find(g => g.id === this.selectedOffer.guideId)
+    },
+    selectedOffer () {
+      console.log(this.$props.offerId)
+      const offer = this.getSingleOffer(this.$props.offerId)
+      console.log(offer)
+      return offer
     }
   },
   methods: {
@@ -57,7 +63,15 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch(GUIDES_LIST).then(() => { this.loaded = true })
+    this.$store.dispatch(GUIDES_LIST).then(() => {
+      if (this.offersInitialized) {
+        this.loaded = true
+      } else {
+        this.$store.dispatch(OFFERS_ALLOFFERS).then(() => {
+          this.loaded = true
+        })
+      }
+    })
   }
 }
 </script>

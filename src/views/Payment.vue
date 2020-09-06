@@ -46,7 +46,7 @@ export default {
   methods: {
     selectProvider () {
       this.$store.dispatch(VOUCHERS_ORDER, this.$props.offerId).then((voucher) => {
-        this.$toastr.s('Vielen Dank', 'Vielen Dank für Deine Bestellung.')
+        this.$toastr.s('Vielen Dank für Deine Bestellung.', 'Vielen Dank')
         this.$router.push({ name: 'voucherdetail', params: { voucherId: voucher.id } })
       })
     }

@@ -16,7 +16,8 @@ export const ApiRoutes = {
     next: ApiServer + 'api/Interests/next'
   },
   offers: {
-    list: ApiServer + 'api/Offers/suggest'
+    list: ApiServer + 'api/Offers/suggest',
+    all: ApiServer + 'api/Offers'
   },
   paidOffers: {
     list: ApiServer + 'api/PaidOffers/suggest'
@@ -27,7 +28,8 @@ export const ApiRoutes = {
   vouchers: {
     order: ApiServer + 'api/Vouchers/{offerId}',
     list: ApiServer + 'api/Vouchers',
-    single: ApiServer + 'api/Vouchers/{voucherId}'
+    single: ApiServer + 'api/Vouchers/{voucherId}',
+    redeem: ApiServer + 'api/Vouchers/{voucherId}'
   }
 }
 

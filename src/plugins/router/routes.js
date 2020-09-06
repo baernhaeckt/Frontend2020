@@ -6,6 +6,7 @@ import Register from '../../views/Register.vue'
 import Order from '../../views/Order.vue'
 import Payment from '../../views/Payment.vue'
 import VoucherDetail from '../../views/VoucherDetail.vue'
+import VoucherRedeem from '../../views/VoucherRedeem.vue'
 import store from '../store'
 
 const ifAuthenticated = (to, from, next) => {
@@ -13,7 +14,7 @@ const ifAuthenticated = (to, from, next) => {
     next()
     return
   }
-  next('/login')
+  next({ name: 'login', query: { returnUrl: to.fullPath } })
 }
 
 export default [
@@ -35,7 +36,7 @@ export default [
     label: 'Bestellen',
     component: Order,
     beforeEnter: ifAuthenticated,
-    props: true,
+    props: route => ({ offerId: route.query.offerId }),
     meta: {
       hidden: true,
       navi: {
@@ -59,6 +60,20 @@ export default [
   },
   {
     path: '/voucher/:voucherId',
+    name: 'voucherredeem',
+    label: 'Voucher einlösen',
+    component: VoucherRedeem,
+    beforeEnter: ifAuthenticated,
+    props: true,
+    meta: {
+      hidden: true,
+      navi: {
+        icon: null
+      }
+    }
+  },
+  {
+    path: '/voucher/detail/:voucherId',
     name: 'voucherdetail',
     label: 'Voucher Detail',
     component: VoucherDetail,

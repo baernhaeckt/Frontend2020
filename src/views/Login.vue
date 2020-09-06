@@ -7,7 +7,7 @@
     </div>
     <div class="text-center">
       <mdb-btn color="primary" @click="loginSubmit">Login</mdb-btn>
-      <p>Noch kein Login? <router-link :to="{ name: 'register'}">Jetzt registrieren</router-link>!</p>
+      <p>Noch kein Login? <router-link :to="{ name: 'register', props: { returnUrl: $props.returnUrl }}">Jetzt registrieren</router-link>!</p>
     </div>
   </center-box>
 </template>
@@ -17,6 +17,12 @@ import { AUTH_REQUEST } from '@/plugins/store/actions/auth'
 
 export default {
   name: 'login',
+  props: {
+    returnUrl: {
+      default: null,
+      type: String
+    }
+  },
   data () {
     return {
       isLoading: false,
@@ -32,12 +38,17 @@ export default {
         email: this.form.email,
         password: this.form.password
       }
+      console.log(this.$props)
       this.isLoading = true
       this.$store
         .dispatch(AUTH_REQUEST, data)
         .then(() => {
           this.isLoading = false
-          this.$router.push('/')
+          if (this.$route.query.returnUrl) {
+            this.$router.push(this.$route.query.returnUrl)
+          } else {
+            this.$router.go(-1)
+          }
         })
         .catch(error => {
           this.isLoading = false
@@ -52,7 +63,11 @@ export default {
   },
   mounted () {
     if (this.$store.getters.isAuthenticated) {
-      this.$router.go(-1)
+      if (this.$route.query.returnUrl) {
+        this.$router.push(this.$route.query.returnUrl)
+      } else {
+        this.$router.go(-1)
+      }
     }
   }
 }
