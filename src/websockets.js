@@ -17,7 +17,7 @@ const startConnection = apiToken => {
       name: 'WebSocketToast',
       title: event.title,
       msg: event.message,
-      type: event.variant
+      type: 'success'
     })
   })
 

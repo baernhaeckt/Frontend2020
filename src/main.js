@@ -23,7 +23,8 @@ require('vue-snack/dist/vue-snack.min.css')
 Vue.use(VueSnackbar, {})
 Vue.use(VueToastr, {
   defaultPosition: 'toast-top-full-width',
-  defaultClassNames: ['mt-5']
+  defaultClassNames: ['mt-5'],
+  defaultTimeout: 10000
 })
 Vue.use(VueHammer)
 
