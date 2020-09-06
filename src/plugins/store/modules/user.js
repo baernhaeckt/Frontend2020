@@ -18,7 +18,7 @@ export default {
     [USER_REQUEST]: ({ commit, dispatch }) => {
       return new Promise((resolve, reject) => {
         commit(USER_REQUEST)
-        apiCall({ url: ApiRoutes.user.profile, dispatch: dispatch })
+        return apiCall({ url: ApiRoutes.user.profile, dispatch: dispatch })
           .then(resp => {
             commit(USER_SUCCESS, resp)
             resolve()
@@ -34,7 +34,7 @@ export default {
     },
     [USER_UPDATE]: ({ commit, dispatch }, profile) => {
       return new Promise((resolve, reject) => {
-        apiCall({
+        return apiCall({
           url: ApiRoutes.user.register,
           data: profile,
           method: 'patch',
@@ -52,7 +52,7 @@ export default {
     },
     [USER_PASSWORD_CHANGE]: ({ commit, dispatch }, passwordChange) => {
       return new Promise((resolve, reject) => {
-        apiCall({
+        return apiCall({
           url: ApiRoutes.user.passwordupdate,
           data: { oldPassword: passwordChange.oldPassword, newPassword: passwordChange.newPassword },
           method: 'patch',

@@ -17,6 +17,17 @@ export const ApiRoutes = {
   },
   offers: {
     list: ApiServer + 'api/Offers/suggest'
+  },
+  paidOffers: {
+    list: ApiServer + 'api/PaidOffers/suggest'
+  },
+  guides: {
+    list: ApiServer + 'api/Guides'
+  },
+  vouchers: {
+    order: ApiServer + 'api/Vouchers/{offerId}',
+    list: ApiServer + 'api/Vouchers',
+    single: ApiServer + 'api/Vouchers/{voucherId}'
   }
 }
 

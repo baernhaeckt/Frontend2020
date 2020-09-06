@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <swiper v-if="step === 'interests' && interestsLoaded" :card="activeCard" @swiperesult="onCardSwipeResult" />
-    <offer-list v-if="step === 'offers'" :offers="offers" />
+    <offer-list v-if="step === 'offers'" :offers="offers" @offerselected="onOfferSelected" />
   </div>
 </template>
 
@@ -39,6 +39,9 @@ export default {
           this.step = 'offers'
         }
       })
+    },
+    onOfferSelected (offer) {
+      this.$router.push({ name: 'order', params: { offer: offer } })
     },
     loadOffers () {
       this.$store.dispatch(OFFERS_LIST, this.answers)

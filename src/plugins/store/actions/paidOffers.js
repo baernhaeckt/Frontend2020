@@ -1,0 +1,1 @@
+export const PAIDOFFERS_LIST = 'PAIDOFFERS_LIST'

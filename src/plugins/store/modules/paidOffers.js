@@ -1,25 +1,21 @@
-import { OFFERS_LIST } from '../actions/offers'
+import { PAIDOFFERS_LIST } from '../actions/paidOffers'
 import { apiCall, ApiRoutes } from '@/plugins/api'
 
 export default {
   state: {
-    offers: [],
-    inited: false
   },
   getters: {
-    getOffers: state => state.offers
   },
   actions: {
-    [OFFERS_LIST]: ({ commit, dispatch }, interests) => {
+    [PAIDOFFERS_LIST]: ({ commit, dispatch }, offerId) => {
       return new Promise((resolve, reject) => {
         return apiCall({
-          url: ApiRoutes.offers.list,
+          url: ApiRoutes.paidOffers.list,
           method: 'post',
-          data: interests,
+          data: { offerId: offerId },
           dispatch: dispatch
         })
           .then(resp => {
-            commit(OFFERS_LIST, resp)
             resolve(resp)
           })
           .catch(err => {
@@ -29,9 +25,5 @@ export default {
     }
   },
   mutations: {
-    [OFFERS_LIST]: (state, resp) => {
-      state.offers = resp
-      state.inited = true
-    }
   }
 }

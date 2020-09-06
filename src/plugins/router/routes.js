@@ -3,9 +3,11 @@ import About from '../../views/About.vue'
 import Forbidden from '../../views/Forbidden.vue'
 import Login from '../../views/Login.vue'
 import Register from '../../views/Register.vue'
-// import store from '../store'
+import Order from '../../views/Order.vue'
+import Payment from '../../views/Payment.vue'
+import VoucherDetail from '../../views/VoucherDetail.vue'
+import store from '../store'
 
-/*
 const ifAuthenticated = (to, from, next) => {
   if (store.getters.isAuthenticated) {
     next()
@@ -13,7 +15,6 @@ const ifAuthenticated = (to, from, next) => {
   }
   next('/login')
 }
-*/
 
 export default [
   {
@@ -22,10 +23,51 @@ export default [
     label: 'Home',
     component: Home,
     meta: {
-      auth: undefined,
       hidden: true,
       navi: {
         icon: 'home'
+      }
+    }
+  },
+  {
+    path: '/order',
+    name: 'order',
+    label: 'Bestellen',
+    component: Order,
+    beforeEnter: ifAuthenticated,
+    props: true,
+    meta: {
+      hidden: true,
+      navi: {
+        icon: null
+      }
+    }
+  },
+  {
+    path: '/payment',
+    name: 'payment',
+    label: 'Bezahlen',
+    component: Payment,
+    beforeEnter: ifAuthenticated,
+    props: true,
+    meta: {
+      hidden: true,
+      navi: {
+        icon: null
+      }
+    }
+  },
+  {
+    path: '/voucher/:voucherId',
+    name: 'voucherdetail',
+    label: 'Voucher Detail',
+    component: VoucherDetail,
+    beforeEnter: ifAuthenticated,
+    props: true,
+    meta: {
+      hidden: true,
+      navi: {
+        icon: null
       }
     }
   },
@@ -34,7 +76,6 @@ export default [
     name: 'about',
     label: 'Über uns',
     component: About,
-    // beforeEnter: ifAuthenticated,
     meta: {
       navi: {
         icon: null

@@ -12,7 +12,7 @@ export default {
   actions: {
     [INTERESTS_LIST]: ({ commit, dispatch }) => {
       return new Promise((resolve, reject) => {
-        apiCall({
+        return apiCall({
           url: ApiRoutes.interests.list,
           method: 'get',
           dispatch: dispatch
@@ -28,7 +28,7 @@ export default {
     },
     [INTERESTS_NEXT]: ({ commit, dispatch }, data) => {
       return new Promise((resolve, reject) => {
-        apiCall({
+        return apiCall({
           url: ApiRoutes.interests.next,
           method: 'post',
           data: data,

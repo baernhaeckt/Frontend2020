@@ -25,7 +25,7 @@ export default {
     [AUTH_REQUEST]: ({ commit, dispatch }, user) => {
       return new Promise((resolve, reject) => {
         commit(AUTH_REQUEST)
-        apiCall({
+        return apiCall({
           url: ApiRoutes.user.login,
           data: { email: user.email, password: user.password },
           method: 'post',
@@ -47,7 +47,7 @@ export default {
     [AUTH_SIGNUP]: ({ commit, dispatch }, user) => {
       return new Promise((resolve, reject) => {
         commit(AUTH_REQUEST)
-        apiCall({
+        return apiCall({
           url: ApiRoutes.user.register,
           data: user,
           method: 'post',

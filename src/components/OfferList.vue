@@ -30,10 +30,11 @@
                             <p><strong>Folgende Leistungen sind im Angebot inbegriffen:</strong></p>
                             <ul class="included-items">
                                 <li v-for="incl in offer.includedItems" :key="incl.name">
-                                    {{incl.name}}: {{incl.description}} <mdb-badge color="primary">Wert: {{new Intl.NumberFormat('de-CH', { style: 'currency', currency: 'CHF' }).format(incl.price)}}</mdb-badge>
+                                    <strong>{{incl.name}}</strong>: {{incl.description}} <mdb-badge color="primary">Wert: {{new Intl.NumberFormat('de-CH', { style: 'currency', currency: 'CHF' }).format(incl.price)}}</mdb-badge>
                                 </li>
                             </ul>
-                            <mdb-btn color="primary" class="float-right">Angebot auswählen</mdb-btn>
+                            <p><strong>Total: {{calculatePrice(offer)}}</strong></p>
+                            <a class="btn btn-primary float-right" @click.stop.prevent="() => selectOffer(offer)">Angebot auswählen</a>
                         </mdb-card-text>
                     </mdb-card-body>
                 </mdb-card>
@@ -58,6 +59,9 @@ export default {
       ).format(offer.includedItems.reduce((acc, val) => {
         return acc + val.price
       }, 0))
+    },
+    selectOffer: function (offer) {
+      this.$emit('offerselected', offer)
     }
   }
 }
@@ -117,6 +121,7 @@ export default {
                     display: inline-block;
                     shape-outside: circle();
                     border-radius: 50%;
+                    margin: 5px;
                 }
             }
         }
