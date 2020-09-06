@@ -8,6 +8,7 @@
             :style="`background-image: url('https://baernhaeckt2020.blob.core.windows.net/images/interests/${$props.card.name}.jpg')`">
             <div class="label">{{$props.card.label || $props.card.name}}</div>
         </div>
+        <img v-if="showSwipeHint" class="swipe-hint" src="/img/swipe-hint.png" ref="swipeHint" />
     </div>
 </template>
 
@@ -23,7 +24,8 @@ export default {
   data () {
     return {
       isPanning: false,
-      cardLoading: false
+      cardLoading: false,
+      showSwipeHint: true
     }
   },
   methods: {
@@ -91,6 +93,7 @@ export default {
         }
 
         if (swipeResult) {
+          this.showSwipeHint = false
           this.emitCardSwipeResult(card, swipeResult)
         }
       }
@@ -98,6 +101,8 @@ export default {
     emitCardSwipeResult (card, result) {
       this.$emit('swiperesult', { card, result })
     }
+  },
+  mounted () {
   },
   watch: {
     props: () => {
@@ -119,6 +124,23 @@ export default {
   position: relative;
   overflow: hidden;
   background-color: rgb(245, 247, 250);
+
+  .swipe-hint {
+    z-index: 10;
+    position: fixed;
+    width: 120px;
+    bottom: 94px;
+    left: 50%;
+    margin-left: -60px;
+    pointer-events: none;
+
+    animation: shake 3s cubic-bezier(.36,.07,.19,.97) both;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
 
   .swipe-card {
     width: 100%;
@@ -150,6 +172,28 @@ export default {
         font-weight: bold;
         background: rgba(0, 0, 0, 0.6);
         color: #fff;
+    }
+  }
+
+  @keyframes shake {
+    0%, 40% {
+      transform: translate3d(0px, 0, 0);
+    }
+
+    5%, 35% {
+      transform: translate3d(4px, 0, 0);
+    }
+
+    10%, 20%, 30% {
+      transform: translate3d(-8px, 0, 0);
+    }
+
+    15%, 25% {
+      transform: translate3d(8px, 0, 0);
+    }
+
+    100% {
+      transform: translate3d(0px, 0, 0);
     }
   }
 }
