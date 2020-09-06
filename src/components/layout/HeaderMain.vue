@@ -92,6 +92,10 @@ export default {
     }
   }
 
+  .dropdown-toggle {
+    padding: 0.84rem 1.14rem;
+  }
+
   .dropdown-menu {
     left: inherit;
     right: 0 !important;
