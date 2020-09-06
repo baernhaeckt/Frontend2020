@@ -24,6 +24,7 @@ Vue.use(VueSnackbar, {})
 Vue.use(VueToastr, {
   defaultPosition: 'toast-top-full-width',
   defaultClassNames: ['mt-5'],
+  defaultStyle: 'opacity: 0.9',
   defaultTimeout: 10000
 })
 Vue.use(VueHammer)

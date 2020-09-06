@@ -15,9 +15,17 @@
         </mdb-navbar-nav>
 
         <template v-if="$store.getters.isAuthenticated">
-          {{ user.email }}
-          <div class="seperator"/>
-          <mdb-btn color="grey" @click="processLogout">Logout</mdb-btn>
+          <div class="clearfix mb-3">
+            <mdb-dropdown class="float-right">
+              <mdb-dropdown-toggle color="elegant" slot="toggle">
+                <mdb-icon icon="user-alt" class="mr-2" />
+                {{ user.email }}
+              </mdb-dropdown-toggle>
+              <mdb-dropdown-menu>
+                <mdb-dropdown-item @click="processLogout">Ausloggen</mdb-dropdown-item>
+              </mdb-dropdown-menu>
+            </mdb-dropdown>
+          </div>
         </template>
       </mdb-navbar-toggler>
     </mdb-navbar>
@@ -71,6 +79,22 @@ export default {
     img {
       height: 100px;
     }
+  }
+
+  .navbar-nav {
+    margin-bottom: 25px;
+
+    .nav-item {
+      border-bottom: 1px solid #ccc;
+       a {
+         color: #fff;
+       }
+    }
+  }
+
+  .dropdown-menu {
+    left: inherit;
+    right: 0 !important;
   }
 }
 </style>
