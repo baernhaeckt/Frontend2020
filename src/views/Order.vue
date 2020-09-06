@@ -1,6 +1,6 @@
 <template>
     <div class="order-view" v-if="loaded">
-        <h1>Dein Angebot</h1>
+        <h1 class="mt-3 mb-4">Dein Angebot</h1>
         <h2 class="h4">{{selectedOffer.name}}</h2>
         <p>{{selectedOffer.description}}</p>
         <h2 class="h4">Inbegriffen sind:</h2>
@@ -89,6 +89,10 @@ export default {
             border-radius: 50%;
             margin: 5px;
         }
+    }
+
+    strong {
+      font-weight: bold;
     }
 }
 </style>

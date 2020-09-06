@@ -7,7 +7,7 @@
             <template slot="front">
               <mdb-card>
                 <mdb-card-body>
-                  <h2 class="text-center">QR-Code Transport-Ticket</h2>
+                  <h2 class="text-center h4 mb-4">QR-Code Transport-Ticket</h2>
                   <mdb-icon icon="undo" />
                 </mdb-card-body>
               </mdb-card>
@@ -26,7 +26,7 @@
             <template slot="front">
               <mdb-card>
                 <mdb-card-body>
-                  <h2 class="text-center">QR-Code Erlebnis-Ticket</h2>
+                  <h2 class="text-center h4 mb-4">QR-Code Erlebnis-Ticket</h2>
                   <mdb-icon icon="undo" />
                 </mdb-card-body>
               </mdb-card>
@@ -43,20 +43,25 @@
           </flip-card>
         </div>
 
-        <h2>Zusatzangebote</h2>
-        <div class="mb-3" v-for="offer in paidOffers" :key="offer.id">
-          <mdb-card>
-            <mdb-card-image :src="`https://baernhaeckt2020.blob.core.windows.net/images/paidoffers/${offer.name.replace(/ /g,'_')}.jpg`"></mdb-card-image>
-            <mdb-card-body>
-              <h3>{{offer.name}}</h3>
-              <ul class="offer-props">
-                <li><strong>Dauer</strong>: {{parseTimeSpan(offer.duration)}}</li>
-                <li><strong>Ort</strong>: {{offer.location}}</li>
-              </ul>
-              <p>{{offer.description}}</p>
-            </mdb-card-body>
-          </mdb-card>
-        </div>
+        <template v-if="havePaidOffers">
+          <h2>Zusatzangebote</h2>
+          <div class="mb-3" v-for="offer in paidOffers" :key="offer.id">
+            <mdb-card>
+              <mdb-card-image :src="`https://baernhaeckt2020.blob.core.windows.net/images/paidoffers/${offer.name.replace(/ /g,'_')}.jpg`"></mdb-card-image>
+              <mdb-card-body>
+                <h3>{{offer.name}}</h3>
+                <ul class="offer-props">
+                  <li><strong>Dauer</strong>: {{parseTimeSpan(offer.duration)}}</li>
+                  <li><strong>Ort</strong>: {{offer.location}}</li>
+                </ul>
+                <p>{{offer.description}}</p>
+                <div class="clearfix">
+                  <mdb-btn color="success" class="float-right">Angebot entdecken</mdb-btn>
+                </div>
+              </mdb-card-body>
+            </mdb-card>
+          </div>
+        </template>
     </div>
 </template>
 
@@ -76,6 +81,11 @@ export default {
       voucher: {},
       paidOffers: [],
       isLoading: true
+    }
+  },
+  computed: {
+    havePaidOffers () {
+      return this.paidOffers.length > 0
     }
   },
   methods: {

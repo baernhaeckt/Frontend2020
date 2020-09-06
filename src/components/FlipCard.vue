@@ -26,9 +26,6 @@ export default {
 .flip-container {
   perspective: 1000;
 }
-.flip-container {
-  min-height: 120px;
-}
 .flipper {
   transform: perspective(1000px);
   transform-style: preserve-3d;
